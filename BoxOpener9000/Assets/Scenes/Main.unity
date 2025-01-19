@@ -214,8 +214,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 81670982}
   m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 0.07, y: 0.32406044, z: 16.69}
-  m_LocalScale: {x: 6.939448, y: 6.939448, z: 6.939448}
+  m_LocalPosition: {x: 0.07, y: 0.32406044, z: 101.3}
+  m_LocalScale: {x: 36.01296, y: 36.01296, z: 36.01296}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -346,7 +346,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Open box
+  m_text: Open the box
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -626,6 +626,11 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!4 &1228279083 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: f20aa00e03a65a8478f1c40a1b9a6794, type: 3}
+  m_PrefabInstance: {fileID: 1307991235}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1307991235
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -759,6 +764,7 @@ GameObject:
   - component: {fileID: 1444775027}
   - component: {fileID: 1444775026}
   - component: {fileID: 1444775025}
+  - component: {fileID: 1444775028}
   m_Layer: 5
   m_Name: Button
   m_TagString: Untagged
@@ -785,7 +791,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: -761}
-  m_SizeDelta: {x: 134.9, y: 41.6}
+  m_SizeDelta: {x: 213.1, y: 63.900024}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1444775025
 MonoBehaviour:
@@ -808,10 +814,10 @@ MonoBehaviour:
     m_SelectOnRight: {fileID: 0}
   m_Transition: 1
   m_Colors:
-    m_NormalColor: {r: 1, g: 0.41960788, b: 0.8565132, a: 1}
-    m_HighlightedColor: {r: 0.9011015, g: 0.37254906, b: 1, a: 1}
-    m_PressedColor: {r: 0.99215686, g: 0.36862746, b: 0.79539275, a: 1}
-    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_HighlightedColor: {r: 0.6509434, g: 0.6509434, b: 0.6509434, a: 1}
+    m_PressedColor: {r: 0.4339623, g: 0.4339623, b: 0.4339623, a: 1}
+    m_SelectedColor: {r: 1, g: 1, b: 1, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
@@ -869,6 +875,26 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1444775023}
   m_CullTransparentMesh: 1
+--- !u!95 &1444775028
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1444775023}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 79f2994530aa55a409ccb7717904a3a5, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &1585275170
 GameObject:
   m_ObjectHideFlags: 0
@@ -916,9 +942,11 @@ MonoBehaviour:
   - {fileID: 1000010728489230, guid: 8b40cffea67202d4bbf662b25de4c94a, type: 3}
   - {fileID: 1000010921973622, guid: af16961524284e54491133548920258b, type: 3}
   - {fileID: 1000012946874890, guid: 586acbe765df7c34385298970076297e, type: 3}
-  prefabScale: {x: 0.5, y: 0.5, z: 0.5}
-  moveSpeed: 1
-  rotationSpeed: 50
+  prefabScale: {x: 0.1, y: 0.1, z: 0.1}
+  endPositionOffset: {x: 0, y: 0.9, z: 0}
+  moveSpeed: 2
+  rotationSpeed: 0
+  scaleDownSpeed: 2
   boxMaterial1: {fileID: 2100000, guid: 050aec11a8c91a04ebc00d791977636f, type: 2}
   boxMaterial2: {fileID: 2100000, guid: 9891c15d790a2334a90e0724f09ddd10, type: 2}
   textures:
@@ -935,6 +963,21 @@ MonoBehaviour:
   - {fileID: 2800000, guid: 50a5fbde3b9c03941876673b8eeaf453, type: 3}
   - {fileID: 2800000, guid: 0691bdc165d2fe949acd83c445f3c762, type: 3}
   openBoxButton: {fileID: 1444775025}
+  buttonText: {fileID: 262664965}
+  boxLight: {fileID: 2053503315}
+  lightRangeOpen: 3.5
+  lightRangeClose: 0
+  lightAnimationSpeed: 5
+  planeMaterial: {fileID: 2100000, guid: a4e2e8231cb41e04b9915cba895e6f3a, type: 2}
+  possibleColors:
+  - {r: 0.28627452, g: 0.28627452, b: 0.7019608, a: 0}
+  - {r: 0.8867924, g: 0.40491277, b: 0.80005896, a: 0}
+  - {r: 0.20784314, g: 0.6156863, b: 0.18431373, a: 0}
+  - {r: 0.68235296, g: 0, b: 0.047058824, a: 0}
+  - {r: 0.75686276, g: 0.6862745, b: 0.11764706, a: 0}
+  - {r: 0.5294118, g: 0.5294118, b: 0.5294118, a: 0}
+  - {r: 0, g: 0, b: 0, a: 0}
+  colorTransitionSpeed: 2
 --- !u!4 &1585275172
 Transform:
   m_ObjectHideFlags: 0
@@ -950,6 +993,100 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &2053503313
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2053503314}
+  - component: {fileID: 2053503315}
+  m_Layer: 0
+  m_Name: Point Light
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2053503314
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2053503313}
+  m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: 0, y: 0.163, z: -0.091}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1228279083}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
+--- !u!108 &2053503315
+Light:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2053503313}
+  m_Enabled: 1
+  serializedVersion: 10
+  m_Type: 0
+  m_Shape: 0
+  m_Color: {r: 0.9831508, g: 1, b: 0.75849056, a: 1}
+  m_Intensity: 28.93
+  m_Range: 0.06
+  m_SpotAngle: 179
+  m_InnerSpotAngle: 21.80208
+  m_CookieSize: 10
+  m_Shadows:
+    m_Type: 0
+    m_Resolution: -1
+    m_CustomResolution: -1
+    m_Strength: 1
+    m_Bias: 0.05
+    m_NormalBias: 0.4
+    m_NearPlane: 0.2
+    m_CullingMatrixOverride:
+      e00: 1
+      e01: 0
+      e02: 0
+      e03: 0
+      e10: 0
+      e11: 1
+      e12: 0
+      e13: 0
+      e20: 0
+      e21: 0
+      e22: 1
+      e23: 0
+      e30: 0
+      e31: 0
+      e32: 0
+      e33: 1
+    m_UseCullingMatrixOverride: 0
+  m_Cookie: {fileID: 0}
+  m_DrawHalo: 0
+  m_Flare: {fileID: 0}
+  m_RenderMode: 0
+  m_CullingMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_RenderingLayerMask: 1
+  m_Lightmapping: 2
+  m_LightShadowCasterMode: 0
+  m_AreaSize: {x: 1, y: 1}
+  m_BounceIntensity: 1
+  m_ColorTemperature: 6570
+  m_UseColorTemperature: 0
+  m_BoundingSphereOverride: {x: 0, y: 0, z: 0, w: 0}
+  m_UseBoundingSphereOverride: 0
+  m_UseViewFrustumForShadowCasterCull: 1
+  m_ShadowRadius: 0
+  m_ShadowAngle: 0
 --- !u!1 &2129003165
 GameObject:
   m_ObjectHideFlags: 0
