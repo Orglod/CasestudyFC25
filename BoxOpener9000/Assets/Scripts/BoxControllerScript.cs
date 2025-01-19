@@ -35,6 +35,7 @@ public class BoxControllerScript : MonoBehaviour
     public float lightRangeOpen = 5f;
     public float lightRangeClose = 0f;
     public float lightAnimationSpeed = 2f;
+    public float lightDimSpeed = 5f;  // New speed for light dimming
 
     // Material Color Gradient Transition (Random colors)
     public Material planeMaterial;
@@ -93,6 +94,13 @@ public class BoxControllerScript : MonoBehaviour
             // Close the box
             yield return StartCoroutine(ScaleDownAndDestroyItems());
             boxAnimator.SetTrigger("CloseBox");
+
+            // Dim the light before the CloseBox animation ends
+            if (boxLight)
+            {
+                StartCoroutine(AnimateLightRange(lightRangeClose, lightDimSpeed)); // Pass both parameters
+            }
+
             yield return new WaitForSeconds(1f);
 
             // Change box textures
@@ -100,12 +108,6 @@ public class BoxControllerScript : MonoBehaviour
 
             // Start color gradient transition
             StartCoroutine(TransitionMaterialColors());
-
-            // Animate light to the "closed" range
-            if (boxLight)
-            {
-                yield return StartCoroutine(AnimateLightRange(lightRangeClose));
-            }
         }
         else
         {
@@ -115,7 +117,7 @@ public class BoxControllerScript : MonoBehaviour
             // Start light animation and item movement simultaneously
             if (boxLight)
             {
-                StartCoroutine(AnimateLightRange(lightRangeOpen));
+                StartCoroutine(AnimateLightRange(lightRangeOpen, lightAnimationSpeed)); // Pass both parameters
             }
 
             // Immediately spawn the item after box opens
@@ -128,6 +130,7 @@ public class BoxControllerScript : MonoBehaviour
         isBoxOpen = !isBoxOpen; // Toggle the state
         isAnimating = false;
     }
+
 
     void ChangeBoxTextures()
     {
@@ -206,14 +209,14 @@ public class BoxControllerScript : MonoBehaviour
         spawnedItems.Clear(); // Clear the list of items
     }
 
-    IEnumerator AnimateLightRange(float targetRange)
+    IEnumerator AnimateLightRange(float targetRange, float animationSpeed)
     {
         float initialRange = boxLight.range;
         float elapsedTime = 0f;
 
         while (Mathf.Abs(boxLight.range - targetRange) > 0.01f)
         {
-            boxLight.range = Mathf.Lerp(initialRange, targetRange, elapsedTime * lightAnimationSpeed);
+            boxLight.range = Mathf.Lerp(initialRange, targetRange, elapsedTime * animationSpeed);
             elapsedTime += Time.deltaTime;
             yield return null;
         }
