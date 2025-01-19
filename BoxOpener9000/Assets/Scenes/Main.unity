@@ -643,6 +643,18 @@ PrefabInstance:
       value: 3
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: f20aa00e03a65a8478f1c40a1b9a6794, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: f20aa00e03a65a8478f1c40a1b9a6794, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: f20aa00e03a65a8478f1c40a1b9a6794, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: f20aa00e03a65a8478f1c40a1b9a6794, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
@@ -681,6 +693,10 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: f20aa00e03a65a8478f1c40a1b9a6794, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: f20aa00e03a65a8478f1c40a1b9a6794, type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -2597149511309488759, guid: f20aa00e03a65a8478f1c40a1b9a6794, type: 3}
       propertyPath: m_LocalPosition.x
@@ -978,6 +994,8 @@ MonoBehaviour:
   - {r: 0.5294118, g: 0.5294118, b: 0.5294118, a: 0}
   - {r: 0, g: 0, b: 0, a: 0}
   colorTransitionSpeed: 2
+  buttonClickClip: {fileID: 8300000, guid: 3656daae8c3ecda478db82ee8d78daad, type: 3}
+  boxOpenStartClip: {fileID: 8300000, guid: 965cd489ae2f1c641913632a64ad6607, type: 3}
 --- !u!4 &1585275172
 Transform:
   m_ObjectHideFlags: 0

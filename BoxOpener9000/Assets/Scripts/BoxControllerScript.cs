@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using TMPro; // For TextMeshProUGUI
+using TMPro;
 
 public class BoxControllerScript : MonoBehaviour
 {
@@ -26,7 +26,7 @@ public class BoxControllerScript : MonoBehaviour
     public Texture[] textures;
 
     public Button openBoxButton;
-    public TextMeshProUGUI buttonText; // Use TextMeshProUGUI instead of Text
+    public TextMeshProUGUI buttonText;
 
     private List<GameObject> spawnedItems = new List<GameObject>();
 
@@ -37,13 +37,20 @@ public class BoxControllerScript : MonoBehaviour
     public float lightAnimationSpeed = 2f;
 
     // Material Color Gradient Transition (Random colors)
-    public Material planeMaterial;   // Material for the plane
-    public Color[] possibleColors; // List of colors to randomly choose from
-    public float colorTransitionSpeed = 2f; // Speed of the color transition
+    public Material planeMaterial;
+    public Color[] possibleColors;
+    public float colorTransitionSpeed = 2f;
+
+    // Audio Clips
+    public AudioClip buttonClickClip; // New audio clip for the button click
+    public AudioClip boxOpenStartClip;
+
+    private AudioSource audioSource;
 
     void Start()
     {
         boxAnimator = box.GetComponent<Animator>();
+        audioSource = gameObject.AddComponent<AudioSource>(); // Add an AudioSource to the GameObject
         openBoxButton.onClick.AddListener(OnButtonClick);
 
         buttonText.text = "Open the Box";
@@ -62,8 +69,17 @@ public class BoxControllerScript : MonoBehaviour
     {
         if (isAnimating) return;
 
+        // Play the button click sound effect every time the button is clicked
+        audioSource.PlayOneShot(buttonClickClip);
+
         // Toggle button text
         buttonText.text = isBoxOpen ? "Open the Box" : "Close the Box";
+
+        // Play the audio for the button press only if the box is opening
+        if (!isBoxOpen)
+        {
+            audioSource.PlayOneShot(boxOpenStartClip);  // Play opening sound on button press
+        }
 
         StartCoroutine(HandleBoxAnimation());
     }
@@ -93,16 +109,20 @@ public class BoxControllerScript : MonoBehaviour
         }
         else
         {
-            // Open the box
+            // Immediately trigger the "OpenBox" animation (bypass transition delay)
             boxAnimator.SetTrigger("OpenBox");
-            yield return new WaitForSeconds(1f);
 
             // Start light animation and item movement simultaneously
             if (boxLight)
             {
                 StartCoroutine(AnimateLightRange(lightRangeOpen));
             }
+
+            // Immediately spawn the item after box opens
             SpawnItem();
+
+            // Wait until the box is fully opened and then move items
+            StartCoroutine(MoveAndRotateItemAfterDelay(spawnedItems));
         }
 
         isBoxOpen = !isBoxOpen; // Toggle the state
@@ -134,9 +154,15 @@ public class BoxControllerScript : MonoBehaviour
 
         spawnedItems.Add(spawnedItem);
 
-        StartCoroutine(MoveAndRotateItem(spawnedItem));
-
         currentPrefabIndex = (currentPrefabIndex + 1) % itemPrefabs.Length;
+    }
+
+    IEnumerator MoveAndRotateItemAfterDelay(List<GameObject> spawnedItems)
+    {
+        foreach (var item in spawnedItems)
+        {
+            yield return MoveAndRotateItem(item); // Move and rotate each item after the delay
+        }
     }
 
     IEnumerator MoveAndRotateItem(GameObject item)
